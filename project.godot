@@ -1,0 +1,36 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Shutdown Shedule"
+run/main_scene="res://main.tscn"
+config/use_hidden_project_data_directory=false
+config/custom_user_dir_name="linebyline"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 0)
+boot_splash/show_image=false
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=600
+window/size/viewport_height=200
+window/size/initial_position_type=3
+window/size/resizable=false
+window/size/always_on_top=true
+window/size/transparent=true
+window/energy_saving/keep_screen_on=false
+window/per_pixel_transparency/allowed=true
+window/vsync/vsync_mode=0
+
+[rendering]
+
+renderer/rendering_method.mobile="gl_compatibility"

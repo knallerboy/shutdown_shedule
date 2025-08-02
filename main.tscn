@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://da8dq04r0n4d4"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_sofpo"]
+[ext_resource type="AudioStream" uid="uid://cq7nmt2uyey1w" path="res://system-notification-199277.mp3" id="2_xd4r2"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sofpo")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="label_timer" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "_timer_
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="button_cancel" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "abbrechen"
+
+[node name="button_shutdown" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "jetzt Herunterfahren"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+
+[node name="notification_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xd4r2")
+volume_db = 10.0
+mix_target = 1
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/button_cancel" to="." method="_on_button_cancel_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/button_shutdown" to="." method="_on_button_shutdown_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
